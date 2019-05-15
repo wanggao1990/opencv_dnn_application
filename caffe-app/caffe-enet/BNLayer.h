@@ -84,8 +84,8 @@ public:
 				//	for (int c = 0; c < outBlob.size[1]; n++) {    // C
 					cv::parallel_for_(cv::Range(0, outBlob.size[1]),[&](auto& r){
 						for (int c = r.start; c < r.end; ++c) {
-							float w = *blobs[0].ptr<float>(num, c);   // N*C*1*1
-							float b = *blobs[1].ptr<float>(num, c);
+							float w = *blobs[0].ptr<float>(0, c);   // 1*C*1*1
+							float b = *blobs[1].ptr<float>(0, c);
 							cv::Mat inpBlobPlane(rows, cols, CV_32F, inpBlob.ptr<float>(num, c));
 							cv::Mat outBlobPlane(rows, cols, CV_32F, outBlob.ptr<float>(num, c));
 							inpBlobPlane.convertTo(outBlobPlane, CV_32F, w, b);

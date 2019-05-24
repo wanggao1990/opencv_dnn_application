@@ -27,8 +27,8 @@ public:
 				assert(scale_h_ >= 1);
 				assert(scale_w_ >= 1);
 			}
-			pad_out_h_ = params.has("pad_out_h_")? params.get<int>("pad_out_h_"): pad_out_h_;
-			pad_out_w_ = params.has("pad_out_w_")? params.get<int>("pad_out_w_"): pad_out_w_;
+			pad_out_h_ = params.has("pad_out_h") ? params.get<std::string>("pad_out_h") == "true" : pad_out_h_;
+			pad_out_w_ = params.has("pad_out_w") ? params.get<std::string>("pad_out_w") == "true" : pad_out_w_;
 
 			assert(!pad_out_h_ || scale_h_ == 2);
 			assert(!pad_out_w_ || scale_w_ == 2);
